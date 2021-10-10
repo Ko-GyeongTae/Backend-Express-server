@@ -12,5 +12,29 @@
 - Docker
 - Nginx
 - MariaDB
+- Redis
 
+
+## To Do List
+---
+- Auth
+    - Login
+    - Signup
+    - E-mail Verify
+    - Token Verify
+    - Refresh Token
+---
+- Post
+    - Create
+    - Read
+    - Update
+    - Delete
+---
+- SocketIO
+    - Chat
+    - Room
+---
+- Multer
+    - File Upload
+    - File Download
 
