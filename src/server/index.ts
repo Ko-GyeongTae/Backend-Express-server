@@ -6,12 +6,11 @@ import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
+import router from '../routes';
 
 export const server = express();
 
 export const init = async (server: Express) => {
-    const router = express.Router();
-
     await dotenv.config();
     console.log('dotenv configuration');
 
@@ -33,5 +32,5 @@ export const init = async (server: Express) => {
     server.use(express.json());
 
     // prefix route
-    server.use('/api/v1', router);
+    server.use('/api', router);
 }
