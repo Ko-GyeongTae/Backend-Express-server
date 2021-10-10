@@ -1,11 +1,10 @@
-import express from "express";
+import { init, server } from "./server";
+import http from 'http';
 
-const server = express();
-​
-server.get("/", (req, res) => {
-    res.send(`Hello World`);
-});
+init(server);
 
-server.listen(4000, () => {
-  console.log(`Server listening on port ${4000}`);
+const serverCallback = server;
+
+http.createServer(serverCallback).listen(80, () => {
+  console.log(`Server listening on port ${80}`);
 });
