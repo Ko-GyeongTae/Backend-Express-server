@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import logger from 'morgan';
 import fs from 'fs';
 import path from 'path';
+import cors from 'cors';
+import helmet from 'helmet';
 
 export const server = express();
 
@@ -21,9 +23,15 @@ export const init = async (server: Express) => {
     // stream logs in cli
     server.use(logger('dev'));
 
-    server.use('/api/v1', router);
+    // set cors middleware
+    server.use(cors({ credentials: true }));
 
-    router.get("/", (req, res, next) => {
-        res.send("Hello");
-    })
+    // set helmet middleware
+    server.use(helmet());
+
+    // set express json middleware
+    server.use(express.json());
+
+    // prefix route
+    server.use('/api/v1', router);
 }
