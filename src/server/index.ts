@@ -13,12 +13,12 @@ export const init = async (server: Express) => {
     await dotenv.config();
     console.log('dotenv configuration');
 
-    //await server.use(Logger);
-    //console.log('logger open')
-
+    // save detail log as file
     server.use(logger('combined', {
         stream: fs.createWriteStream(path.join(__dirname, '../../logs/access.log'), { flags: 'a' })
     }));
+
+    // stream logs in cli
     server.use(logger('dev'));
 
     server.use('/api/v1', router);
