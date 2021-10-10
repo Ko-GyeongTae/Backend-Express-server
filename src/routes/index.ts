@@ -1,8 +1,8 @@
 import express from 'express';
-import postRouter from './post';
-import authRouter from './auth';
+import apiRouter from './api';
 
 const router = express.Router();
 
-router.use('/auth', authRouter);
-router.use('/post', postRouter);
+router.use('/v1', apiRouter);
+
+export default router;
