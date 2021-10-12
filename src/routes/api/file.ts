@@ -6,7 +6,7 @@ router.post('/upload', async (req, res) => {
     res.send('file upload');
 });
 
-router.post('/file/:fid', async(req, res) => {
+router.post('/:fid', async(req, res) => {
     res.send('file: ' + req.params.fid);
 })
 

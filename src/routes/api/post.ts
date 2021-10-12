@@ -2,9 +2,13 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/:pid', async (req, res) => {
-    res.send('post router');
+router.get('/', async (req, res) => {
+    res.send('list');
 });
+
+router.get('/:pid', async (req, res) => {
+    res.send('post: ' + req.params.pid);
+})
 
 router.post('/', async (req, res) => {
     res.send('create');
@@ -16,10 +20,6 @@ router.put('/:pid', async (req, res) => {
 
 router.delete('/:pid', async (req, res) => {
     res.send('delete');
-});
-
-router.get('/list', async (req, res) => {
-    res.send('list')
 });
 
 export default router;

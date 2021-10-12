@@ -2,10 +2,6 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    res.send('auth router');
-});
-
 router.post('/login', async (req, res) => {
     res.send('login');
 });
