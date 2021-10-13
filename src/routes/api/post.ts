@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:pid', async (req, res) => {
     res.send('post: ' + req.params.pid);
-})
+});
 
 router.post('/', async (req, res) => {
     res.send('create');

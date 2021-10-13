@@ -7,6 +7,7 @@ import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import router from '../routes';
+import { createConnection } from 'typeorm';
 
 export const server = express();
 
@@ -18,6 +19,11 @@ export const init = async (server: Express) => {
     server.use(logger('combined', {
         stream: fs.createWriteStream(path.join(__dirname, '../../logs/access.log'), { flags: 'a' })
     }));
+
+    // connect to database
+    createConnection()
+    .then(async connection => {})
+    .catch(e => console.log(e))
 
     // stream logs in cli
     server.use(logger('dev'));
@@ -32,5 +38,5 @@ export const init = async (server: Express) => {
     server.use(express.json());
 
     // prefix route
-    server.use('/api', router);
+    server.use('/api/v1', router);
 }
