@@ -5,7 +5,7 @@ export class File {
     @PrimaryGeneratedColumn('increment')
     fid: number;
 
-    @Column('unique')
+    @Column({unique: true})
     filename: string;
 
     @Column()
