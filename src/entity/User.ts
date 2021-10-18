@@ -5,7 +5,7 @@ export class User {
     @PrimaryGeneratedColumn('uuid')
     uid: string;
 
-    @Column({unique: true})
+    @Column({ unique: true })
     id: string;
 
     @Column()
@@ -14,12 +14,12 @@ export class User {
     @Column()
     password: string;
 
-    @Column()
+    @Column({ default: () => false })
     isValidated: boolean;
 
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     createdAt: string;
-    
+
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     updatedAt: string;
 }

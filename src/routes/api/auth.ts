@@ -11,8 +11,8 @@ router.post('/login', async (req, res) => {
 
     const user = await getConnection()
         .createQueryBuilder()
-        .select()
-        .from(User, 'user')
+        .select("user")
+        .from(User, "user")
         .where("user.id = :id", { id: id })
         .andWhere("user.password = :password", { password: password })
         .getOne();
@@ -38,18 +38,20 @@ router.post('/signup', async (req, res) => {
         status = 400;
         body = { "errorMessage": "Bad Request" };
     } else {
-        const result = await getConnection()
+        await getConnection()
             .createQueryBuilder()
             .insert()
             .into(User)
-            .values({ id, email, password });
-
-
+            .values({
+                id: id,
+                email: email,
+                password: password
+            })
+            .execute();
 
         status = 201;
         body = { "result": "ok" };
     }
-    console.log(id, email, password);
 
     res.status(status).json(body);
 });
