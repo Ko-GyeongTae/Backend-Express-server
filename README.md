@@ -23,6 +23,7 @@
     - E-mail Verify
     - Token Verify
     - Refresh Token
+    - Modify info
 ---
 - Post
     - Create
