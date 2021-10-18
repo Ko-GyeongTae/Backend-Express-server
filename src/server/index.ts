@@ -38,5 +38,5 @@ export const init = async (server: Express) => {
     server.use(express.json());
 
     // prefix route
-    server.use('/api/v1', router);
+    server.use('/api', router);
 }
