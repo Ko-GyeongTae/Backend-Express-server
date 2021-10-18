@@ -50,11 +50,37 @@ router.post('/signup', async (req, res) => {
             .execute();
 
         status = 201;
-        body = { "result": "ok" };
+        body = { "successMessage": "ok" };
     }
 
     res.status(status).json(body);
 });
+
+router.put('/modify', async (req, res) => {
+    const { id, email, password } = req.body;
+    let status, body;
+    
+    if (id === undefined || email === undefined || password === undefined) {
+        status = 400;
+        body = { "errorMessage": "Bad Request" };
+    } else {
+        await getConnection()
+            .createQueryBuilder()
+            .update(User)
+            .set({
+                id: id,
+                email: email,
+                password: password
+            })
+            .where("id = :id", {id: id})
+            .execute();
+        
+        status = 200;
+        body = { "successMessage": "ok" }
+    }
+
+    res.status(status).json(body);
+})
 
 router.get('/logout', async (req, res) => {
     res.send('logout');
